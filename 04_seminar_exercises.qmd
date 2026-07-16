@@ -652,9 +652,11 @@ t_plot +
 Recall, we want to estimate the probability of drawing a value as extreme (or even more extreme) than the one we obtained if the true value would be zero. That probability is the area under the curve left to the t-value we found.
 
 ```{r}
-if (!requireNamespace("ggmagnify", quietly = TRUE)) {
-  remotes::install_github("hughjonesd/ggmagnify")
-}
+install.packages(
+  "ggmagnify",
+  repos = c("https://hughjonesd.r-universe.dev", "https://cloud.r-project.org")
+)
+
 library(ggmagnify)
 
 t_plot +
