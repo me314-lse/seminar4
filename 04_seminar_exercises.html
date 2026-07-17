@@ -200,12 +200,16 @@ window.Quarto = {
 <p>We will use this dataset to estimate the association between the weight of a car (<code>wt</code>) and its miles per gallon (<code>mpg</code>). Before estimating the model, let’s get a better understanding of the data.</p>
 <p>Use the <code>head()</code>, <code>summary()</code>, and <code>glimpse()</code> functions to explore the dataset.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code goes here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code goes here</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can also visualise the relationship between the two variables using a scatter plot. This will help us understand the nature of the relationship before we fit a linear regression model.</p>
 <p>Create a scatterplot with <code>wt</code> on the x-axis and <code>mpg</code> on the y-axis. Use the <code>ggplot2</code> package to create the plot and assign it to an object called <code>scatterplot</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code goes here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code goes here</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>scatterplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> mtcars, <span class="fu">aes</span>(<span class="at">x =</span> wt, <span class="at">y =</span> mpg)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>scatterplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout-info">
 <p>If any plot elements look too small, Positron’s <strong>Plots</strong> pane lets you enlarge a plot or open it in a separate window, so no extra setup is needed.</p>
@@ -214,7 +218,7 @@ window.Quarto = {
 <p>Let’s add a straight line of best fit to the plot to make it even clearer.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>scatterplot_guess <span class="ot">&lt;-</span> scatterplot <span class="sc">+</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> ___, <span class="at">slope =</span> ____, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">45</span>, <span class="at">slope =</span> <span class="sc">-</span><span class="dv">7</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>scatterplot_guess</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -230,7 +234,7 @@ window.Quarto = {
 <p><code>y ~ x</code></p>
 <p>The variable names must correspond to column names in a dataframe that you specify in the <code>data</code> argument.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>car_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> ______, <span class="at">data =</span> mtcars)</span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>car_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> mpg <span class="sc">~</span> wt, <span class="at">data =</span> mtcars)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>car_model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Questions:</strong></p>
@@ -243,10 +247,10 @@ window.Quarto = {
 </div>
 <p>Use the <code>geom_abline()</code> function to add our estimated regression line and the intercept to the plot. Don’t hard-code the slope and intercept, but extract them from the model using <code>coef()</code> and appropriate indexing.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>car_slope <span class="ot">&lt;-</span> <span class="fu">coef</span>(______)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>_______</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>car_intercept <span class="ot">&lt;-</span> <span class="fu">coef</span>(______)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>_______</span>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>car_slope <span class="ot">&lt;-</span> <span class="fu">coef</span>(car_model)[[<span class="st">"wt"</span>]]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>car_intercept <span class="ot">&lt;-</span> <span class="fu">coef</span>(car_model)[[<span class="st">"(Intercept)"</span>]]</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>scatterplot <span class="sc">+</span></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">fullrange =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
@@ -258,8 +262,8 @@ window.Quarto = {
 <span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
 <span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"point"</span>,</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> ______,</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> _________,</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="dv">0</span>,</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> car_intercept,</span>
 <span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"black"</span>,</span>
 <span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">8</span>,</span>
 <span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="dv">18</span></span>
